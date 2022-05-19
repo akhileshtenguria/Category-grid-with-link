@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_LoyaltyRule
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Webkul_LoyaltyRule::manager"
+            title="Loyalty Rules"
+            module="Webkul_LoyaltyRule"
+            sortOrder="10"
+            resource="Webkul_LoyaltyRule::manager"
+            />
+
+        <add 
+            id="Webkul_LoyaltyRule::loyalty" 
+            title="Manage Loyalty Rules" 
+            module="Webkul_LoyaltyRule" 
+            sortOrder="12" 
+            parent="Webkul_LoyaltyRule::manager" 
+            action="loyalty/rule" 
+            resource="Webkul_LoyaltyRule::loyalty" />
+    </menu>
+</config>

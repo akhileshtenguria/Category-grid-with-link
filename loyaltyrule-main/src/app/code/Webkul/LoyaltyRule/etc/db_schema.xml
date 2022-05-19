@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_LoyaltyRule
+ * @author    Webkul
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <!--Loyalty Rule Table-->
+  <table name="loyalty_rules" resource="default" engine="innodb">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="text" name="rule_name" nullable="false" comment="Rule Name"/>
+    <column xsi:type="timestamp" name="start_date" on_update="false" nullable="true" comment="Start Date"/>
+    <column xsi:type="timestamp" name="end_date" on_update="false" nullable="true" comment="End Date"/>
+    <column xsi:type="smallint" name="status" padding="2" unsigned="true" nullable="false" identity="false" default="0" comment="Status"/>
+    <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Creation Time"/>
+    <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Update Time"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+  </table>
+
+  <!--Loyalty Rule Assigned Category Table-->
+  <table name="loyalty_rule_assigned_category" resource="default" engine="innodb">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"  comment="Id"/>
+    <column xsi:type="int" name="loyalty_rule_id" padding="10" unsigned="true" nullable="false" default="0" identity="false"  comment="Loyalty Rule Id"/>
+    <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" default="0" identity="false"  comment="Category Id"/>
+    <column xsi:type="int" name="loyalty_points" padding="10" unsigned="true" nullable="false" default="0" identity="false"  comment="Loyalty Points"/>
+    <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Creation Time"/>
+    <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Update Time"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+  </table>
+</schema>

@@ -1,0 +1,29 @@
+{
+    "loyalty_rules": {
+        "column": {
+            "id": true,
+            "rule_name": true,
+            "start_date": true,
+            "end_date": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "loyalty_rule_assigned_category": {
+        "column": {
+            "id": true,
+            "loyalty_rule_id": true,
+            "category_id": true,
+            "loyalty_points": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,38 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_LoyaltyRule
+ * @author    Webkul
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "legacy" : {}
+        }
+    }
+</script>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "prototype"
+    ], function(jQuery){
+        jQuery(document).ajaxSuccess(function (event, xhr, settings)  {
+            if (settings.url.match(/loyalty\/rule\/validate/g))  {
+                if (xhr.responseJSON.error)  {
+                    jQuery("html, body").scrollTop(jQuery("body").find("#messages").offset().top-100);
+                }
+            }
+        });
+
+        jQuery(document).ready(function(){
+            jQuery(".admin__data-grid-loading-mask").hide();
+        });
+
+    });
+</script>

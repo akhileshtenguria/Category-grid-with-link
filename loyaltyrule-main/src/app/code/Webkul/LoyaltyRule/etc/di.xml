@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_LoyaltyRule
+ * @author    Webkul
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Webkul\LoyaltyRule\Api\Data\RuleInterface" type="Webkul\LoyaltyRule\Model\Rule"/>
+    <preference for="Webkul\LoyaltyRule\Api\RuleRepositoryInterface" type="Webkul\LoyaltyRule\Model\RuleRepository"/>
+    
+    <virtualType name="RuleGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="RuleGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="filterPool" xsi:type="object" shared="false">RuleGirdFilterPool</argument>
+            <argument name="collection" xsi:type="object" shared="false">Webkul\LoyaltyRule\Model\ResourceModel\Rule\Collection</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Webkul\LoyaltyRule\Model\ResourceModel\Rule\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">loyalty_rules</argument>
+            <argument name="eventObject" xsi:type="string">loyalty_rules_grid_collection</argument>
+            <argument name="eventPrefix" xsi:type="string">loyalty_rules_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\LoyaltyRule\Model\ResourceModel\Rule</argument>
+        </arguments>
+    </type>
+   
+   <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="loyalty_rules_listing_data_source" xsi:type="string">Webkul\LoyaltyRule\Model\ResourceModel\Rule\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+   
+</config>
